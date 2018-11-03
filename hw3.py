@@ -23,15 +23,15 @@ def modexp(x, y, n):
 # returns a tuple for the cyphertext (C, X_t+1)
 def encrypt(m, n, seed):
 
-	#compute k, h, and t
+	# compute k, h, and t
 	k = int(math.log(n, 2))
 	h = int(math.log(k, 2))
 	t = math.ceil(m.bit_length() / h)
 
-	#initialize X_0 with the seed
+	# initialize X_0 with the seed
 	X = [seed]
 
-	#Create a mask to get h bits
+	# Create a mask to get h bits
 	h_mask = 2**h - 1
 
 	C = 0
@@ -51,7 +51,8 @@ def encrypt(m, n, seed):
 		# Append Ci to full cyphertext
 		C += Ci * (2**bitpos)
 
-	return C, X[t]
+	#return the cyphertext and X_t+1
+	return C, modexp(X[t], 2, n)
 
 
 # Decrypts the cyphertext tuple and returns the plaintext
@@ -72,8 +73,6 @@ def decrypt(cyphertext):
 	u = modexp(Xt, d1, p)
 	v = modexp(Xt, d2, q)
 	X0 = (v*a*p + u*b*q) % n
-
-	print(d1, d2)
 
 	#initialize X with X0
 	X = [X0]
@@ -109,6 +108,7 @@ print("Plaintext:", m, "or", plaintext)
 n = p * q
 seed = 159201
 
+#encrypt using Blum Goldwasser Probabilistic Encryption Algorithm
 cyphertext = encrypt(m, n, seed)
 print("Cyphertext:", cyphertext, "or", "(" + bin(cyphertext[0])[2:] + ", " + bin(cyphertext[1])[2:] + ")")
 
