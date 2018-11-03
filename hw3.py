@@ -6,6 +6,7 @@ p = 499
 q = 547
 a = -57
 b = 52
+seed = 159201
 
 # Modular exponentiation to work with large numbers
 # x^y mod n
@@ -104,9 +105,8 @@ m = int("0b" + plaintext, 2)
 
 print("Plaintext:", m, "or", plaintext)
 
-#Compute public key and choose a seed
+#Compute public key
 n = p * q
-seed = 159201
 
 #encrypt using Blum Goldwasser Probabilistic Encryption Algorithm
 cyphertext = encrypt(m, n, seed)
