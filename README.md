@@ -25,7 +25,7 @@ breaks up the cyphertext in to t blocks, and decrypts each one sequentially by c
 the h least significant bits of X<sub>i</sub>, which is computed the same way as in the encryption alg.
 After decrypting each block, it will return the full plaintext as an integer.
 
-Output:
-Plaintext: 639244 or 10011100000100001100
-Cyphertext: (134372, 139680) or (100000110011100100, 100010000110100000)
-Decrypted ciphertext: 639244 or 10011100000100001100
+Output:  
+Plaintext: 639244 or 10011100000100001100  
+Cyphertext: (134372, 139680) or (100000110011100100, 100010000110100000)  
+Decrypted ciphertext: 639244 or 10011100000100001100  
